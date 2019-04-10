@@ -1,0 +1,78 @@
+<!--
+  Generated template for the AddDataPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AddDataPage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class= "abc">
+  <ion-list>
+      <ion-item>
+      <ion-label>bus number</ion-label>
+      <ion-input type="text" value=""  [(ngModel)]="busno" required></ion-input>
+      <!-- <p>{{busno}}</p> -->
+    </ion-item>
+    
+    <br>
+    <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input type="text" value=""[(ngModel)]="password" required></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+    <ion-label>Driver Name</ion-label>
+    <ion-input type="text" value=""[(ngModel)]="drivername" required></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+    <ion-label>Driver number</ion-label>
+    <ion-input type="text" value=""[(ngModel)]="driverno" required></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+    <ion-label>Address</ion-label>
+    <ion-input type="text" value=""[(ngModel)]="address" required></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+    <ion-label>Driver Status</ion-label>
+    <ion-input type="boolean" value=""[(ngModel)]="statusvalue" required></ion-input>
+    </ion-item>
+    <br>
+    <div *ngFor="let stop of stopsdataset; let i=index ">
+    <ion-item >
+    <ion-label>Bus Stoppege:{{i+1}}</ion-label>
+    <ion-input type="text" value=""[(ngModel)]="stop.stops" required></ion-input><br></ion-item>
+    <ion-item ><ion-label>Lattitude:{{i+1}}</ion-label>
+    <ion-input type="number" value=""[(ngModel)]="stop.lat" required></ion-input><br></ion-item>
+    <ion-item ><ion-label>Longitude:{{i+1}}</ion-label>
+    <ion-input type="number" value=""[(ngModel)]="stop.long" required></ion-input><br>
+    </ion-item>
+    <br>
+  </div>
+  <button  ion-button full (click)=" addstoppage()">
+    <ion-icon ios="ios-add" md="md-add" style="zoom:1.3;margin-right:15px"></ion-icon>Add More Stoppage
+  </button>
+      <br>
+     <br>
+     <br>
+    
+     <button ion-button full (click)="adddata()">Add Data</button>
+     <br>
+      
+      </ion-list>
+</ion-content>
+<ion-footer class="bc">
+  <ion-toolbar>
+    <ion-title>@skit bus tracker</ion-title>
+  </ion-toolbar>
+</ion-footer>
+

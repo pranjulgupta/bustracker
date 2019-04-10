@@ -1,14 +1,87 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Live Track
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding padding class= "abc">
+
+  <div *ngIf="status1"> <p>Address:{{newAddr}}</p></div>
+  <!-- <div *ngIf="list">
+  <p  *ngFor="let m of markers;" >{{m.lat}}</p></div> -->
+  <p>Your Bus:{{searchbus}} Live Location is update Please!! Wait</p><br>
+  <p>Your Driver Name:{{drivername}}</p><br>
+  <p>Your Driver Number:{{driverno}}</p><br>
+ <div  *ngIf="status"><p >Current Location Of bus:{{responseObj.address}}</p></div> 
+  <div *ngIf="statusValue">
+    
+    <!-- <p>hello</p> -->
+    <!-- <agm-map [latitude]="locationmarker_lat" [longitude]="locationmarker_long">
+      <agm-marker  [latitude]="locationmarker_lat" [longitude]="locationmarker_long" (markerClick)="markerClick(m)"></agm-marker>
+    </agm-map> -->
+<agm-map 
+[latitude]="lat"
+[longitude]="lng"
+[zoom]="zoom"
+[disableDefaultUI]="false"
+[zoomControl]="false"
+(mapClick)="mapClicked($event)">
+<agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+<agm-marker 
+    *ngFor="let m of markers; let i = index"
+    (markerClick)="clickedMarker(m.label, i)"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [iconUrl]="m.iconUrl"
+    [markerDraggable]="m.draggable"
+    (dragEnd)="markerDragEnd(m, $event)">
+    
+  <agm-info-window>
+    <strong>InfoWindow content</strong>
+  </agm-info-window>
+  
+</agm-marker>
+
+<agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
+    [radius]="5000"
+    [fillColor]="'red'"
+    [circleDraggable]="true"
+    [editable]="true">
+</agm-circle>
+
+
+</agm-map>
+<!-- <ul>
+    <li *ngFor= "let m of placelist; let i= index">place Name: {{m}}<br></li>
+</ul> -->
+</div>
+<div *ngIf="status1">
+<button ion-button (click)="TrackGeolocation()" [disabled]="disable5">Track Location</button></div>
+  <div *ngIf="status">
+    <button ion-button (click)="getGeolocation()" [disabled]="disable">Get Location</button>
+  
+    <button ion-button (click)="function1()" [disabled]="disable1">Show Location</button> 
+    <button ion-button (click)="watchLocation()" [disabled]="disable2">Watch Location Updates</button>
+    <button ion-button (click)="markerclick()" [disabled]="disable3">show location update</button>
+    <button ion-button (click)="UpdateStatus()" [disabled]="disable4">Stop Location Watch</button></div>    
+  
+    <!-- <p>Accuracy : {{responseObj.accuracy}}</p>  -->
+    <p class="address-text">
+   
+      <span class="watch-text" *ngIf="issWatching; else notWatching">
+           Watching Location
+        </span>
+        <ng-template #notWatching>
+            Bus Location process is updating please Wait!!
+        </ng-template>
+   
+      <!-- <br>Address : {{responseObj.address}}--></p> 
 </ion-content>
+<ion-footer class="bc">
+  <ion-toolbar>
+    <ion-title>@skit bus tracker</ion-title>
+  </ion-toolbar>
+</ion-footer>

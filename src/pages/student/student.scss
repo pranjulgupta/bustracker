@@ -1,0 +1,44 @@
+page-student {
+    .t{
+        text-align: left;
+        text-decoration-color: rgb(0, 174, 255);
+        -webkit-text-fill-color: rgb(0, 255, 234);
+    -webkit-text-size-adjust: 200fr;
+    font-stretch: ultra-expanded;
+    font-size: 30px
+    }
+    
+    .abc{
+        background-color: rgba(255, 238, 0, 0.404);
+    -webkit-border-before-color: rgba(255, 238, 0, 0.404)
+    }
+    .bc{
+       color: yellowgreen;
+    }
+    
+    .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: transparent;
+       
+        color: black;
+    }
+    
+    .fixed-footer{
+      border: gray;
+       overflow: hidden;
+    background-color: white;
+       text-decoration: none;
+        bottom: 0;
+    }
+    .toolbar-content-md{
+      color:white;
+    }
+    
+    .toolbar-background {
+    background-color: #ffbf00;
+    }
+    .footer-background {
+    background-color: white;
+    }
+}
